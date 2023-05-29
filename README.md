@@ -3,6 +3,7 @@ A simple python script to make a docx (Microsoft Office word) file from multiple
 
 ![code-to-docx](https://socialify.git.ci/SharafatKarim/code-to-docx/image?description=1&descriptionEditable=A+docx+file+from+multiple+files+of+codes+for+your+assignment+or+presentation.&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto)
 
+
 ## Run Locally
 
 Clone the project
@@ -28,6 +29,9 @@ Keep your files in the `input` directory run the script!
 ```bash
   python main.py
 ```
+
+A sample video,
+![](https://github.com/SharafatKarim/code-to-docx/assets/93897936/09364bfa-7479-4458-afca-bda0289a6fb3)
 
 ## Authors
 

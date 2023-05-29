@@ -31,7 +31,7 @@ Keep your files in the `input` directory run the script!
 ```
 
 A sample video,
-![](https://github.com/SharafatKarim/code-to-docx/assets/93897936/09364bfa-7479-4458-afca-bda0289a6fb3)
+https://github.com/SharafatKarim/code-to-docx/assets/93897936/09364bfa-7479-4458-afca-bda0289a6fb3
 
 ## Authors
 

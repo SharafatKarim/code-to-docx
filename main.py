@@ -1,6 +1,7 @@
 from docx import Document
 from docx.shared import Inches
 import os
+from natsort import natsorted
 
 def write():
     document = Document()
@@ -28,7 +29,8 @@ def write():
         files_list.append(f)
 
 	# if you want to sort them
-    files_list.sort()
+    # files_list.natsorted()
+    files_list = natsorted(files_list)
 
     for i in files_list:
         if i[-2:]=='.c':

@@ -1,8 +1,8 @@
 # File To Docx
+
 A simple python script to make a docx (Microsoft Office word) file from multiple files of codes for your presentation.
 
 ![code-to-docx](https://socialify.git.ci/SharafatKarim/code-to-docx/image?description=1&descriptionEditable=A+docx+file+from+multiple+files+of+codes+for+your+assignment+or+presentation.&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto)
-
 
 ## Run Locally
 
@@ -26,21 +26,22 @@ Install dependencies
 
 Keep your files in the `input` directory run the script!
 
+### (new features!!)
+- In blacklist.txt you add those files which you really want to ignore.
+- you dont need to specify the format at first run, it will just dig through the files and folder inside the "input/"
+
 ```bash
   python main.py
 ```
 
 A sample video,
 
-
 https://github.com/SharafatKarim/code-to-docx/assets/93897936/dcdd878a-cbc1-4c28-82c5-416a7a5146bd
-
-
-
 
 ## Authors
 
 [![SharafatKarim's Profilator](https://profilator.deno.dev/SharafatKarim?v=1.0.0.alpha.4)](https://github.com/SharafatKarim)
+[![AyakashiKitsune's Profilator](https://profilator.deno.dev/AyakashiKitsune?v=1.0.0.alpha.4)](https://github.com/AyakashiKitsune)
 
 ## Contribution
 

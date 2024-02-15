@@ -1,9 +1,23 @@
+from datetime import datetime
 from docx import Document
 from docx.shared import Inches
 import os
 from natsort import natsorted
 
-file_extesion= input("Enter file extension: ")
+# reading ignore files
+with open("blacklist.txt") as f:
+    blacklisted_files = ["input/" + blacklist.removesuffix("\n") for blacklist in f.readlines()]
+    blacklisted_files = list(set(filter(lambda x: '#' not in  x, blacklisted_files)))
+files = []
+def getfilesinfolder(basepath = "input"):    
+    for filename in os.listdir(basepath):
+        f = os.path.join(basepath,filename)
+        if f not in blacklisted_files:
+            if os.path.isdir(f):
+                getfilesinfolder(f)
+            else:
+                files.append(f)
+    return files
 
 def write():
     document = Document()
@@ -22,42 +36,26 @@ def write():
 
     document.add_page_break()
 
-    # assign directory
-    directory="input"
+    # does dig in deeper
+    files_list = getfilesinfolder()
 
-    files_list = []
-    for filename in os.listdir(directory):
-        f = os.path.join(directory, filename)
-        files_list.append(f)
 
 	# if you want to sort them
-    # files_list.natsorted()
     files_list = natsorted(files_list)
-
-    for i in files_list:
-        # if i[-2:]=='.c':
-        if i.split('.')[-1]==file_extesion:
-            print("Found file -> ", i)
-
+        
+    # loop through the files
     for i in range(len(files_list)):
-        # if files_list[i][-2:]=='.c':
-        if files_list[i].split('.')[-1]==file_extesion:
-            file_content = open(files_list[i])
-            # document.add_heading(files_list[i][6:-2], level=1)
-            document.add_heading(files_list[i].split('.')[0], level=1)
-            document.add_paragraph(file_content.read())
-            document.add_page_break() # page break
-            # document.add_page_break() # page break for screenshots
+        # with open it can safely close the open() function
+        with open(files_list[i]) as thisfile:
+            document.add_heading(files_list[i].replace("input/",""), level=1)
+            document.add_paragraph(thisfile.read(),)
+            document.add_page_break() 
 
-    if os.path.isfile('output.docx'):
-        print("File exists. Do you want to overwrite it?")
-        user_input = input("Enter y or n: ")
-        if user_input == 'y':
-            document.save('output.docx')
-        else:
-            print("File not saved")
-    else:
-        document.save('output.docx')
+    # get time as filename
+    now = datetime.now()
+    outputfile = f"output {now}.docx"
+    document.save(outputfile)
+    print(f"saved in file name {outputfile}")
 
 if __name__ == "__main__":
     write()

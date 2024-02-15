@@ -1,5 +1,6 @@
 /__pycache__
 /venv
-output.docx
+*.docx
 .vscode
-input/
+input/*
+env

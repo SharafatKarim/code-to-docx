@@ -9,7 +9,12 @@ with open("blacklist.txt") as f:
     blacklisted_files = ["input/" + blacklist.removesuffix("\n") for blacklist in f.readlines()]
     blacklisted_files = list(set(filter(lambda x: '#' not in  x, blacklisted_files)))
 files = []
+
 def getfilesinfolder(basepath = "input"):    
+    if not os.path.exists(basepath):
+        print(f"Error: Directory '{basepath}' does not exist. Creating it now.")
+        print("Please put your codes on the 'input' directory, and re-run the script to use!")
+        os.makedirs(basepath)
     for filename in os.listdir(basepath):
         f = os.path.join(basepath,filename)
         if f not in blacklisted_files:

@@ -28,16 +28,9 @@ def getfilesinfolder(basepath="input"):
         print("Please put your files inside the 'input' directory and rerun.")
         return []
 
-    # Only walk through input/ and subdirectories, avoiding root folder and hidden dirs
+    # Walk through input/ and all its subdirectories
     for dirpath, dirnames, filenames in os.walk(basepath):
-        # Skip the root input/ directory and hidden directories like .venv
-        if dirpath == basepath:
-            continue  # Skip root folder
-        
-        # Exclude hidden directories or unwanted directories
-        dirnames[:] = [d for d in dirnames if not d.startswith('.')]  # Skip hidden dirs
-
-        # Process files in the current directory
+        # Process files in the current directory (including root)
         for filename in filenames:
             full_path = os.path.join(dirpath, filename)
 
@@ -45,7 +38,11 @@ def getfilesinfolder(basepath="input"):
             if full_path in blacklisted_files:
                 continue
 
-            files.append(full_path)
+            # If the file is in the root folder, include it as well
+            if dirpath == basepath:
+                files.append(full_path)  # Add root files directly to list
+            else:
+                files.append(full_path)  # Add files from subdirectories as well
 
     return files
 

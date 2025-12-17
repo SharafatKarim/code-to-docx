@@ -86,7 +86,8 @@ def write():
         document.add_page_break()
 
     # Save file
-    outputfile = "output.docx"
+    now = datetime.now()
+    outputfile = f"{str(now).replace(':', '-').replace(' ', '-')}.docx"
     document.save(outputfile)
     print(f"Saved as {outputfile}")
 
